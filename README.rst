@@ -5,6 +5,13 @@ flange
 Overview
 ========
 
-flange is a tiny tool for Unix to connect stdin/stdout of two processes.
+flange is a tiny tool for Unix to connect stdin/stdout of two processes. The
+final form which flange makes is::
 
-.. vim: tabstop=2 shiftwidth=2 expandtab softtabstop=2 filetype=rst
+    +---------+                     +---------+
+    |         |stdin<---\ /--->stdin|         |
+    |command A|          X          |command B|
+    |         |stdout---/ \---stdout|         |
+    +---------+                     +---------+
+
+.. vim: tabstop=4 shiftwidth=4 expandtab softtabstop=4 filetype=rst
