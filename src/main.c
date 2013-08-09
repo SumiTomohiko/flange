@@ -31,7 +31,6 @@ dup2_or_die(int oldd, int newd)
 
 struct lexer {
     const char* p;
-    const char* pend;
 };
 
 static void
@@ -43,14 +42,13 @@ skip_whitespace(struct lexer* lexer)
 }
 
 static void
-copy_token(char* dest, const char* src)
+copy_token(struct lexer* lexer, char* dest)
 {
     char* pdest = dest;
-    const char* psrc = src;
-    while ((*psrc != '\0') && (*psrc != ' ')) {
-        *pdest = *psrc;
+    while ((*lexer->p != '\0') && (*lexer->p != ' ')) {
+        *pdest = *lexer->p;
         pdest++;
-        psrc++;
+        lexer->p++;
     }
     *pdest = '\0';
 }
@@ -63,14 +61,13 @@ split_command(const char* cmd)
     struct lexer __lexer__;
     struct lexer* lexer = &__lexer__;
     lexer->p = cmd;
-    lexer->pend = cmd + strlen(cmd);
 
     int i;
-    for (i = 0; lexer->p < lexer->pend; i++) {
+    for (i = 0; *lexer->p != '\0'; i++) {
         skip_whitespace(lexer);
 
         char* buf = (char*)malloc(sizeof(char) * 256);
-        copy_token(buf, lexer->p);
+        copy_token(lexer, buf);
         args[i] = buf;
     }
     args[i] = NULL;
