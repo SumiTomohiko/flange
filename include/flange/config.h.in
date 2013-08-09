@@ -1,0 +1,9 @@
+#if !defined(FLANGE_CONFIG_H_INCLUDED)
+#define FLANGE_CONFIG_H_INCLUDED
+
+#define FLANGE_VERSION @FLANGE_VERSION@
+
+#endif
+/**
+ * vim: tabstop=4 shiftwidth=4 expandtab softtabstop=4
+ */
