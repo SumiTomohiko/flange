@@ -1,0 +1,27 @@
+#!/bin/sh
+
+dir="$(dirname $0)"
+ping="${dir}/ping"
+pong="${dir}/pong"
+n="3"
+tmp="$$"
+
+${FLANGE} "${ping} ${n}" "${pong}" 2> "${tmp}"
+actual="$(cat "${tmp}")"
+expected="PING
+PONG
+PING
+PONG
+PING
+PONG"
+if [ "${actual}" != "${expected}" ]; then
+    status=1
+else
+    status=0
+fi
+
+rm -f "${tmp}"
+
+exit "${status}"
+
+# vim: tabstop=4 shiftwidth=4 expandtab softtabstop=4

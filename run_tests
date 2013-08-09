@@ -1,0 +1,12 @@
+#!/bin/sh
+
+dir="$(dirname $0)"
+find "${dir}" -name "test_*" -perm 0755 | while read t
+do
+    FLANGE="${dir}/src/flange" "${t}"
+    if [ $? -ne 0 ]; then
+        echo "failed: ${t}"
+    fi
+done
+
+# vim: tabstop=4 shiftwidth=4 expandtab softtabstop=4

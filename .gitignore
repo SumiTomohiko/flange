@@ -9,3 +9,8 @@
 /src/Makefile
 /src/cmake_install.cmake
 /src/flange
+/tests/CMakeFiles
+/tests/Makefile
+/tests/cmake_install.cmake
+/tests/ping
+/tests/pong
