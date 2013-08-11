@@ -6,6 +6,7 @@
 /cmake_install.cmake
 /configure.conf
 /include/flange/config.h
+/install_manifest.txt
 /src/CMakeCache.txt
 /src/CMakeFiles
 /src/Makefile
